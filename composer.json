@@ -1,0 +1,19 @@
+{
+	"name": "axllent/silverstripe-gfmarkdown",
+	"description": "GitHub Flavored Markdown editing & rendering using Parsedown",
+	"type": "silverstripe-module",
+	"keywords": ["silverstripe", "markdown"],
+	"license": "The MIT License (MIT)",
+	"authors": [
+		{
+			"name": "Ralph Slooten",
+			"homepage": "http://www.axllent.org/"
+		}
+	],
+	"support": {
+		"issues": "https://github.com/axllent/silverstripe-gfmarkdown/issues"
+	},
+	"require": {
+		"silverstripe/cms": "3.*"
+	}
+}
