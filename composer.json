@@ -2,6 +2,7 @@
 	"name": "axllent/silverstripe-gfmarkdown",
 	"description": "GitHub Flavored Markdown editing & rendering using Parsedown",
 	"type": "silverstripe-module",
+	"homepage": "https://github.com/axllent/silverstripe-gfmarkdown",
 	"keywords": ["silverstripe", "markdown"],
 	"license": "The MIT License (MIT)",
 	"authors": [
