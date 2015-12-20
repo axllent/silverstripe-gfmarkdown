@@ -1,6 +1,7 @@
 <?php
 
-class MarkdownEditor extends TextareaField {
+class MarkdownEditor extends TextareaField
+{
     protected $rows=30;
 
     protected $wrap_mode=false;
@@ -9,7 +10,8 @@ class MarkdownEditor extends TextareaField {
      * Sets the "Wrap Mode" on the ACE editor markdown field.
      * @param boolean $mode True if word wrap should be enabled, false if not
      */
-    public function setWrapMode($mode = false) {
+    public function setWrapMode($mode = false)
+    {
         $this->wrap_mode=$mode;
         return $this;
     }
@@ -18,7 +20,8 @@ class MarkdownEditor extends TextareaField {
      * Returns the field holder used by templates
      * @return {string} HTML to be used
      */
-    public function FieldHolder($properties=array()) {
+    public function FieldHolder($properties=array())
+    {
         $this->extraClasses['stacked']='stacked';
         Requirements::css(MARKDOWN_MODULE_BASE.'/css/MarkdownEditor.css');
         Requirements::javascript(MARKDOWN_MODULE_BASE.'/thirdparty/ace/ace.js');
@@ -33,7 +36,8 @@ class MarkdownEditor extends TextareaField {
      * Generates the attributes to be used on the field
      * @return {array} Array of attributes to be used on the form field
      */
-    public function getAttributes() {
+    public function getAttributes()
+    {
         return array_merge(
             parent::getAttributes(),
             array(

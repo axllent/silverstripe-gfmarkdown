@@ -1,6 +1,7 @@
 <?php
 
-class Markdown extends Text {
+class Markdown extends Text
+{
 
     public static $casting=array(
         'AsHTML'=>'HTMLText',
@@ -15,7 +16,8 @@ class Markdown extends Text {
      * @param {bool} $useGFM Use Github Flavored Markdown or render using plain markdown defaults to false just like how readme files are rendered on github
      * @return {string} Markdown rendered as HTML
      */
-    public function AsHTML() {
+    public function AsHTML()
+    {
         $Parsedown = new Parsedown();
         return $Parsedown->text($this->value);
     }
@@ -26,7 +28,8 @@ class Markdown extends Text {
      *
      * @see GISMarkdown::AsHTML()
      */
-    public function forTemplate() {
+    public function forTemplate()
+    {
         return $this->AsHTML();
     }
 }
