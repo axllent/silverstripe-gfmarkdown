@@ -1,0 +1,6 @@
+---
+Name: gfmarkdowninjector
+---
+SilverStripe\Core\Injector\Injector:
+  Markdown:
+    class: Axllent\Gfmarkdown\Model\FieldTypes\Markdown

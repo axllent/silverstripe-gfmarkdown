@@ -1,5 +1,4 @@
-Github Flavoured Markdown for SilverStripe 3
-============================================
+# Github Flavoured Markdown for SilverStripe 4
 
 This module adds a field and a data type that allows for Markdown editing in the CMS using
 the Github Flavoured Markdown parser [Parsedown](http://parsedown.org/) to render the html.
@@ -10,7 +9,7 @@ Silverstripe-gfmarkdown is strongly based on [silverstripe-markdown](https://git
 
 ## Requirements
 
-* SilverStripe 3.x
+* SilverStripe 4.x
 
 ## Usage
 
@@ -19,13 +18,17 @@ Use the Markdown data type as your fields data type, then use the MarkdownEditor
 ### Page class:
 
 ```php
-class MyPage extends Page {
-    public static $db=array(
-        'MarkdownContent'=>'Markdown'
+use Page;
+
+class MyPage extends Page
+{
+    public static $db = array(
+        'MarkdownContent' => 'Markdown'
     );
 
-    public function getCMSFields() {
-        $fields=parent::getCMSFields();
+    public function getCMSFields()
+    {
+        $fields = parent::getCMSFields();
 
         $editor = new MarkdownEditor('MarkdownContent', 'Page Content (Markdown)');
         $editor->setRows(15); //optional, set number of rows in CMS
