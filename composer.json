@@ -15,6 +15,19 @@
 		"issues": "https://github.com/axllent/silverstripe-gfmarkdown/issues"
 	},
 	"require": {
-		"silverstripe/cms": "3.*"
-	}
+		"silverstripe/cms": "^4.0@dev",
+        "erusev/parsedown": "^1.6"
+	},
+    "extra": {
+        "branch-alias": {
+            "dev-master": "2.x-dev"
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Axllent\\Gfmarkdown\\": "code/"
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
 }
