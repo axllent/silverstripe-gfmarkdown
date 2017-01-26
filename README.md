@@ -19,6 +19,7 @@ Use the Markdown data type as your fields data type, then use the MarkdownEditor
 
 ```php
 use Page;
+use Axllent\Gfmarkdown\Forms\MarkdownEditor;
 
 class MyPage extends Page
 {
