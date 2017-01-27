@@ -23,6 +23,8 @@
                 editor.getSession().setMode('ace/mode/markdown');
                 editor.setShowPrintMargin(false);
                 editor.setTheme('ace/theme/twilight');
+                // editor.setTheme('ace/theme/monokai');
+                editor.renderer.setScrollMargin(10, 10, 0, 0);
                 editor.resize();
                 div.removeClass('ace_dark');
                 $(this).setEditor(editor);

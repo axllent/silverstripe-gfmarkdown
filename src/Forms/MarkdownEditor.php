@@ -33,7 +33,6 @@ class MarkdownEditor extends TextareaField
         Requirements::css($base . '/css/MarkdownEditor.css');
         Requirements::javascript($base . '/thirdparty/ace/ace.js');
         Requirements::javascript($base . '/thirdparty/ace/mode-markdown.js');
-        Requirements::javascript($base . '/thirdparty/ace/theme-textmate.js');
         Requirements::javascript($base . '/thirdparty/ace/theme-twilight.js');
         Requirements::javascript($base . '/javascript/MarkdownEditor.js');
         return parent::FieldHolder($properties);
