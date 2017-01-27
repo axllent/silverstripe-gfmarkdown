@@ -28,12 +28,14 @@ class MarkdownEditor extends TextareaField
     public function FieldHolder($properties = array())
     {
         $this->extraClasses['stacked'] = 'stacked';
-        Requirements::css(MARKDOWN_MODULE_BASE . '/css/MarkdownEditor.css');
-        Requirements::javascript(MARKDOWN_MODULE_BASE . '/thirdparty/ace/ace.js');
-        Requirements::javascript(MARKDOWN_MODULE_BASE . '/thirdparty/ace/mode-markdown.js');
-        Requirements::javascript(MARKDOWN_MODULE_BASE . '/thirdparty/ace/theme-textmate.js');
-        Requirements::javascript(MARKDOWN_MODULE_BASE . '/thirdparty/ace/theme-twilight.js');
-        Requirements::javascript(MARKDOWN_MODULE_BASE . '/javascript/MarkdownEditor.js');
+        $base = $this->getModuleBase();
+
+        Requirements::css($base . '/css/MarkdownEditor.css');
+        Requirements::javascript($base . '/thirdparty/ace/ace.js');
+        Requirements::javascript($base . '/thirdparty/ace/mode-markdown.js');
+        Requirements::javascript($base . '/thirdparty/ace/theme-textmate.js');
+        Requirements::javascript($base . '/thirdparty/ace/theme-twilight.js');
+        Requirements::javascript($base . '/javascript/MarkdownEditor.js');
         return parent::FieldHolder($properties);
     }
 
@@ -50,5 +52,14 @@ class MarkdownEditor extends TextareaField
                 'wrap-mode' => ($this->wrap_mode) ? "true" : "false"
             )
         );
+    }
+
+    /**
+    * Returns the base directory of this module
+    * @return string
+    */
+    private function getModuleBase()
+    {
+        return basename(dirname(dirname(dirname(__FILE__))));
     }
 }
