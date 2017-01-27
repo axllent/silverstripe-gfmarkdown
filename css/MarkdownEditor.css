@@ -5,12 +5,13 @@
 .markdowneditor .markdowneditor_editor {
     position: relative;
     font-family: Monaco, "Liberation Mono", Courier, monospace;
-    
+
     z-index: 0;
 }
 
 .markdowneditor .markdowneditor_editor .ace_content {
     line-height: normal;
+    padding-top: 5px;
 }
 
 .markdowneditor .ace-twilight .ace_editor {
@@ -28,6 +29,7 @@
     overflow: hidden;
     border-right: 1px solid #DDD;
     font-family: Consolas, "Liberation Mono", Courier, monospace;
+    padding-top: 5px;
 }
 
 .markdowneditor .ace-twilight .ace_gutter-layer {
