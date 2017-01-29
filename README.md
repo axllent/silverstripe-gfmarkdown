@@ -11,6 +11,10 @@ Silverstripe-gfmarkdown is strongly based on [silverstripe-markdown](https://git
 
 * SilverStripe 4.x
 
+## Installation
+
+`composer require axllent/silverstripe-gfmarkdown`
+
 ## Usage
 
 Use the Markdown data type as your fields data type, then use the MarkdownEditor field in the CMS for editing.
