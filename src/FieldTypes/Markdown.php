@@ -1,8 +1,9 @@
 <?php
 
-namespace Axllent\Gfmarkdown\Model\FieldTypes;
+namespace Axllent\Gfmarkdown\FieldTypes;
 
 use Parsedown;
+use SilverStripe\Core\Config\Config;
 use SilverStripe\ORM\FieldType\DBText;
 
 class Markdown extends DBText
@@ -14,6 +15,8 @@ class Markdown extends DBText
 
     public static $escape_type = 'xml';
 
+    private static $options = [];
+
     /**
      * Render markdown as HTML using Parsedown
      *
@@ -21,8 +24,14 @@ class Markdown extends DBText
      */
     public function AsHTML()
     {
-        $Parsedown = new Parsedown();
-        return $Parsedown->text($this->value);
+        $parsedown = new Parsedown();
+        $options = Config::inst()->get(self::class, 'options');
+        foreach ($options as $fn => $param) {
+            if (method_exists($parsedown, $fn)) {
+                $parsedown->{$fn}($param);
+            }
+        }
+        return $parsedown->text($this->value);
     }
 
     /**

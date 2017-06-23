@@ -35,10 +35,10 @@ class MyPage extends Page
     {
         $fields = parent::getCMSFields();
 
-        $editor = new MarkdownEditor('MarkdownContent', 'Page Content (Markdown)');
+        $editor = MarkdownEditor::create('MarkdownContent', 'Page Content (Markdown)');
         $editor->setRows(15); //optional, set number of rows in CMS
         $editor->setWrapMode(true); //optional, turn on word wrapping
-        $fields->addFieldToTab("Root.Main", $editor);
+        $fields->addFieldToTab('Root.Main', $editor);
 
         return $fields;
     }
@@ -51,4 +51,16 @@ class MyPage extends Page
 <div class="content">
     $MarkdownContent  <!-- Will show as rendered html -->
 </div>
+```
+
+## Configuration
+
+You can specify default parsedown rendering options as supported by [pasedown](https://github.com/erusev/parsedown/wiki/Tutorial:-Get-Started):
+
+```yml
+Axllent\Gfmarkdown\FieldTypes\Markdown:
+  options:
+    setBreaksEnabled: true
+    setMarkupEscaped: true
+    setUrlsLinked: true
 ```
