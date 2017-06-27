@@ -3,7 +3,7 @@
 This module adds a field and a data type that allows for Markdown editing in the CMS using
 the Github Flavoured Markdown parser [Parsedown](http://parsedown.org/) to render the html.
 
-It includes the [Ace editor](http://ace.c9.io/) for CMS editing.
+It includes the [Ace editor](https://ace.c9.io/) for CMS editing.
 
 ## Requirements
 
