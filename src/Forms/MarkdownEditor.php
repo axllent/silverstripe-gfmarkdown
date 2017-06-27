@@ -4,21 +4,67 @@ namespace Axllent\Gfmarkdown\Forms;
 
 use SilverStripe\Forms\TextareaField;
 use SilverStripe\View\Requirements;
+use SilverStripe\Control\Director;
+
+/**
+ * Markdown Editor using Ace Editor
+ */
 
 class MarkdownEditor extends TextareaField
 {
-    protected $rows = 30;
+    protected $theme;
+    protected $rows;
+    protected $wrap;
+    protected $highlight_active_line;
 
-    protected $wrap_mode = false;
+    public function __construct($name, $title = null, $value = null)
+    {
+        parent::__construct($name, $title = null, $value = null);
+        $this->theme = $this->currConfig('theme', 'chrome');
+        $this->rows = $this->currConfig('rows', 10);
+        $this->wrap = $this->currConfig('wrap', true);
+        $this->highlight_active_line = $this->currConfig('highlight_active_line', false);
+    }
 
     /**
-     * Sets the "Wrap Mode" on the ACE editor markdown field.
-     * @param boolean $mode True if word wrap should be enabled, false if not
+     * Sets the theme for the ACE editor markdown editor.
+     * @param string
      */
-    public function setWrapMode($mode = false)
+    public function setTheme($theme = 'chrome')
     {
-        $this->wrap_mode = $mode;
+        $this->theme = $theme;
         return $this;
+    }
+
+    /**
+     * Sets the "Wrap Mode" on the ACE editor markdown editor.
+     * @param boolean $mode true if word wrap should be enabled, false if not
+     */
+    public function setWrap($boolean = false)
+    {
+        $this->wrap = $boolean;
+        return $this;
+    }
+
+    /**
+     * Sets the current line highlighting for the ACE editor markdown editor.
+     * @param boolean
+     */
+    public function setHighlightActiveLine($boolean = false)
+    {
+        $this->highlight_active_line = $boolean;
+        return $this;
+    }
+
+    /**
+     * Check current config else return a default
+     * @param String, value
+     * @return value
+     */
+    protected function currConfig($key, $default = false)
+    {
+        $val = $this->config()->get($key);
+        return (isset($val)) ? $val : $default;
     }
 
     /**
@@ -31,24 +77,32 @@ class MarkdownEditor extends TextareaField
         $base = $this->getModuleBase();
 
         Requirements::css($base . '/css/MarkdownEditor.css');
+
         Requirements::javascript($base . '/thirdparty/ace/ace.js');
         Requirements::javascript($base . '/thirdparty/ace/mode-markdown.js');
-        Requirements::javascript($base . '/thirdparty/ace/theme-twilight.js');
+        if (is_file(Director::baseFolder() . $base . '/thirdparty/ace/theme-' . $this->theme . '.js')) {
+            Requirements::javascript($base . '/thirdparty/ace/theme-' . $this->theme . '.js');
+        }
         Requirements::javascript($base . '/javascript/MarkdownEditor.js');
+
         return parent::FieldHolder($properties);
     }
 
     /**
      * Generates the attributes to be used on the field
-     * @return array Array of attributes to be used on the form field
+     * @return Array of attributes to be used on the form field
      */
     public function getAttributes()
     {
+        $theme = 'ace/theme/' . trim(htmlspecialchars($this->theme));
+
         return array_merge(
             parent::getAttributes(),
             array(
-                'style' => 'width: 97%; max-width: 100%; height: ' . ($this->rows * 16) . 'px; resize: none;', // prevents horizontal scrollbars
-                'wrap-mode' => ($this->wrap_mode) ? "true" : "false"
+                'style' => 'width: 97%; max-width: 100%; height: ' . ($this->rows * 15) . 'px; resize: none;', // prevents horizontal scrollbars
+                'data-ace-wrap' => $this->wrap ? true : false,
+                'data-ace-theme' => $theme,
+                'data-ace-highlight-active-line' => $this->highlight_active_line
             )
         );
     }

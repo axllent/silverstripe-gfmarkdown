@@ -3,7 +3,6 @@
 namespace Axllent\Gfmarkdown\FieldTypes;
 
 use Parsedown;
-use SilverStripe\Core\Config\Config;
 use SilverStripe\ORM\FieldType\DBText;
 
 class Markdown extends DBText
@@ -25,7 +24,7 @@ class Markdown extends DBText
     public function AsHTML()
     {
         $parsedown = new Parsedown();
-        $options = Config::inst()->get(self::class, 'options');
+        $options = $this->config()->get('options');
         foreach ($options as $fn => $param) {
             if (method_exists($parsedown, $fn)) {
                 $parsedown->{$fn}($param);

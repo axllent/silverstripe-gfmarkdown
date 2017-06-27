@@ -8,15 +8,6 @@
     line-height: normal;
 }
 
-.markdowneditor .ace-twilight {
-    background-color: #1d1f21;
-}
-
-.markdowneditor .ace-twilight .ace_gutter {
-    background: #303030;
-    color: #777a83;
-}
-
 .markdowneditor .ace-twilight .ace_gutter-active-line,
 .markdowneditor .ace-twilight .ace_marker-layer .ace_active-line {
     background-color: transparent;

@@ -3,9 +3,7 @@
 This module adds a field and a data type that allows for Markdown editing in the CMS using
 the Github Flavoured Markdown parser [Parsedown](http://parsedown.org/) to render the html.
 
-It is integrated with the [Ace editor](http://ace.c9.io/) for CMS editing.
-
-Silverstripe-gfmarkdown is strongly based on [silverstripe-markdown](https://github.com/UndefinedOffset/silverstripe-markdown).
+It includedes the [Ace editor](http://ace.c9.io/) for CMS editing.
 
 ## Requirements
 
@@ -17,9 +15,12 @@ Silverstripe-gfmarkdown is strongly based on [silverstripe-markdown](https://git
 
 ## Usage
 
-Use the Markdown data type as your fields data type, then use the MarkdownEditor field in the CMS for editing.
+Use the Markdown data type as your fields data type, and the MarkdownEditor field in the CMS for editing.
 
-### Page class:
+- Refer to the [Markdown editor configuration](docs/en/MarkdownEditor.md).
+- Refer to the [Markdown rendering configuration](docs/en/Markdown.md).
+
+## Example:
 
 ```php
 use Page;
@@ -39,29 +40,25 @@ class MyPage extends Page
         $editor = MarkdownEditor::create('MarkdownContent', 'Page Content (Markdown)');
         $editor->setRows(15); //optional, set number of rows in CMS
         $editor->setWrapMode(true); //optional, turn on word wrapping
+        $editor->setTheme('cobalt'); // set theme
         $fields->addFieldToTab('Root.Main', $editor);
+        $fields->addFieldToTab('Root.Main',
+            MarkdownEditor::create('Specifications')
+                ->setTheme('github')            // set theme
+                ->setRows(20)                   // set number of rows in CMS
+                ->setWrap(false)                // disable word wrapping
+                ->setHighlightActiveLine(true)  // enable line highlighting
+        );
 
         return $fields;
     }
 }
 ```
 
-### Template:
+## SilverStripe Template:
 
 ```html
 <div class="content">
     $MarkdownContent  <!-- Will show as rendered html -->
 </div>
-```
-
-## Configuration
-
-You can specify the default parsedown rendering options as supported by [pasedown](https://github.com/erusev/parsedown/wiki/Tutorial:-Get-Started):
-
-```yml
-Axllent\Gfmarkdown\FieldTypes\Markdown:
-  options:
-    setBreaksEnabled: true
-    setMarkupEscaped: true
-    setUrlsLinked: true
 ```

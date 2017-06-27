@@ -15,24 +15,24 @@
                 $(this).setTextArea($(this));
                 $(this).hide();
 
-                var div=$('<div id="'+$(this).attr('ID')+'_Editor" class="markdowneditor_editor"/>').css('height', $(this).getFrame().height).css('width', $(this).getFrame().width).text($(this).val());
+                var div = $('<div id="' + $(this).attr('ID') + '_Editor" class="markdowneditor_editor"/>')
+                    .css('height', $(this).getFrame().height).css('width', $(this).getFrame().width).text($(this).val());
                 div.insertAfter($(this));
                 $(this).setDiv(div);
 
-                var editor=ace.edit(div.get(0));
+                var editor = ace.edit(div.get(0));
                 editor.getSession().setMode('ace/mode/markdown');
                 editor.setShowPrintMargin(false);
-                editor.setTheme('ace/theme/twilight');
-                // editor.setTheme('ace/theme/monokai');
+                editor.setTheme($(this).data('ace-theme'));
                 editor.renderer.setScrollMargin(10, 10, 0, 0);
                 editor.resize();
-                div.removeClass('ace_dark');
+                editor.setHighlightActiveLine($(this).data('ace-highlight-active-line'));
                 $(this).setEditor(editor);
 
-                var code=$(this).val();
+                var code = $(this).val();
                 $(this).setUseSoftTabs($(this).usesSoftTabs(code));
-                $(this).setTabSize($(this).getSoftTabs() ? $(this).guessTabSize(code):8);
-                $(this).setUseWrapMode($(this).attr("wrap-mode") == "true");
+                $(this).setTabSize($(this).getSoftTabs() ? $(this).guessTabSize(code) : 8);
+                $(this).setUseWrapMode($(this).data('ace-wrap'));
                 $(this).setupFormBindings();
                 $(this).setupHacks();
             },
@@ -40,13 +40,13 @@
                 return $(this).getEditor().getSession().getValue();
             },
             setupFormBindings: function() {
-                var self=$(this);
-                $(this).getEditor().getSession().on("change", function() {
+                var self = $(this);
+                $(this).getEditor().getSession().on('change', function() {
                     self.getTextArea().val(self.code()).change();
                 });
             },
             setupHacks: function() {
-                $(this).getDiv().find('.ace_gutter').css("height", $(this).getFrame().height);
+                $(this).getDiv().find('.ace_gutter').css('height', $(this).getFrame().height);
             },
             setUseSoftTabs: function(val) {
                 $(this).setSoftTabs(val);
@@ -59,8 +59,8 @@
                 $(this).getEditor().getSession().setUseWrapMode(val);
             },
             guessTabSize: function(val) {
-                var result=/^( +)[^*]/im.exec(val || $(this).code());
-                return (result ? result[1].length:2);
+                var result = /^( +)[^*]/im.exec(val || $(this).code());
+                return (result ? result[1].length : 2);
             },
             usesSoftTabs: function(val) {
                 return !/^\t/m.test(val || $(this).code());
