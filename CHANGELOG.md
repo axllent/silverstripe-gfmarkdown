@@ -2,9 +2,11 @@
 
 Notable changes to this project will be documented in this file.
 
-## [ 2.1.0]
+## [2.1.0]
 
-- Add support for YAML options
+- Support for YAML global options
+- Support for individual MarkdownEditor instances
+- Themes
 
 ## [2.0.0]
 
