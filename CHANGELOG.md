@@ -4,7 +4,7 @@ Notable changes to this project will be documented in this file.
 
 ## [2.1.1]
 
-- Fix bux whereby editor title wasn't rendered properly
+- Fix bug whereby editor title wasn't rendered properly
 
 ## [2.1.0]
 
