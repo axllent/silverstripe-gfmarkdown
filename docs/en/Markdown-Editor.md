@@ -25,10 +25,15 @@ Each editor instance in the CMS can be customised individually:
 ```php
 <?php
 
+use Axllent\Gfmarkdown\FieldTypes\Markdown;
 use Axllent\Gfmarkdown\Forms\MarkdownEditor;
 
 class Product extends Page
 {
+    public static $db = array(
+        'Specifications' => 'Markdown'
+    );
+
     public function getCMSFields()
     {
         $fields = parent::getCMSFields();

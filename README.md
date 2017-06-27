@@ -3,7 +3,7 @@
 This module adds a field and a data type that allows for Markdown editing in the CMS using
 the Github Flavoured Markdown parser [Parsedown](http://parsedown.org/) to render the html.
 
-It includedes the [Ace editor](http://ace.c9.io/) for CMS editing.
+It includes the [Ace editor](http://ace.c9.io/) for CMS editing.
 
 ## Requirements
 
@@ -23,7 +23,9 @@ Use the Markdown data type as your fields data type, and the MarkdownEditor fiel
 ## Example:
 
 ```php
-use Page;
+<?php
+
+use Axllent\Gfmarkdown\FieldTypes\Markdown;
 use Axllent\Gfmarkdown\Forms\MarkdownEditor;
 
 class MyPage extends Page
