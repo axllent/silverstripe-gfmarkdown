@@ -19,7 +19,7 @@ class MarkdownEditor extends TextareaField
 
     public function __construct($name, $title = null, $value = null)
     {
-        parent::__construct($name, $title = null, $value = null);
+        parent::__construct($name, $title, $value);
         $this->theme = $this->currConfig('theme', 'chrome');
         $this->rows = $this->currConfig('rows', 10);
         $this->wrap = $this->currConfig('wrap', true);
