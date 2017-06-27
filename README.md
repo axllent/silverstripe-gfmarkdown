@@ -39,13 +39,8 @@ class MyPage extends Page
         $fields = parent::getCMSFields();
 
         // If you want the Ace markdown editor in the CMS
-        $editor = MarkdownEditor::create('MarkdownContent', 'Page Content (Markdown)');
-        $editor->setRows(15); //optional, set number of rows in CMS
-        $editor->setWrapMode(true); //optional, turn on word wrapping
-        $editor->setTheme('cobalt'); // set theme
-        $fields->addFieldToTab('Root.Main', $editor);
         $fields->addFieldToTab('Root.Main',
-            MarkdownEditor::create('Specifications')
+            MarkdownEditor::create('MarkdownContent')
                 ->setTheme('github')            // set theme
                 ->setRows(20)                   // set number of rows in CMS
                 ->setWrap(false)                // disable word wrapping
