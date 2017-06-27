@@ -25,7 +25,6 @@ Use the Markdown data type as your fields data type, and the MarkdownEditor fiel
 ```php
 <?php
 
-use Axllent\Gfmarkdown\FieldTypes\Markdown;
 use Axllent\Gfmarkdown\Forms\MarkdownEditor;
 
 class MyPage extends Page
