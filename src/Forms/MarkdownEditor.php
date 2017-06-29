@@ -73,7 +73,6 @@ class MarkdownEditor extends TextareaField
      */
     public function FieldHolder($properties = array())
     {
-        $this->extraClasses['stacked'] = 'stacked';
         $base = $this->getModuleBase();
 
         Requirements::css($base . '/css/MarkdownEditor.css');
