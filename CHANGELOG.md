@@ -2,6 +2,10 @@
 
 Notable changes to this project will be documented in this file.
 
+## [2.1.2]
+
+- Remove default stacked class
+
 ## [2.1.1]
 
 - Fix bug whereby editor title wasn't rendered properly
