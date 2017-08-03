@@ -2,6 +2,10 @@
 
 Notable changes to this project will be documented in this file.
 
+## [2.2.2]
+
+- Fix bug in path
+
 ## [2.1.2]
 
 - Remove default stacked class
