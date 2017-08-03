@@ -79,7 +79,7 @@ class MarkdownEditor extends TextareaField
 
         Requirements::javascript($base . '/thirdparty/ace/ace.js');
         Requirements::javascript($base . '/thirdparty/ace/mode-markdown.js');
-        if (is_file(Director::baseFolder() . $base . '/thirdparty/ace/theme-' . $this->theme . '.js')) {
+        if (is_file(Director::baseFolder() . '/' . $base . '/thirdparty/ace/theme-' . $this->theme . '.js')) {
             Requirements::javascript($base . '/thirdparty/ace/theme-' . $this->theme . '.js');
         }
         Requirements::javascript($base . '/javascript/MarkdownEditor.js');
