@@ -7,14 +7,12 @@ use SilverStripe\ORM\FieldType\DBText;
 
 class Markdown extends DBText
 {
-    public static $casting = array(
+    private static $casting = array(
         'AsHTML' => 'HTMLText',
         'Markdown' => 'Text'
     );
 
-    public static $escape_type = 'xml';
-
-    private static $options = [];
+    private static $escape_type = 'xml';
 
     /**
      * Render markdown as HTML using Parsedown
