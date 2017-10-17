@@ -2,14 +2,14 @@
 
 namespace Axllent\Gfmarkdown\Forms;
 
+use SilverStripe\Control\Director;
+use SilverStripe\Core\Manifest\ModuleResourceLoader;
 use SilverStripe\Forms\TextareaField;
 use SilverStripe\View\Requirements;
-use SilverStripe\Control\Director;
 
 /**
  * Markdown Editor using Ace Editor
  */
-
 class MarkdownEditor extends TextareaField
 {
     protected $theme;
@@ -73,16 +73,19 @@ class MarkdownEditor extends TextareaField
      */
     public function FieldHolder($properties = array())
     {
-        $base = $this->getModuleBase();
+        Requirements::css('axllent/silverstripe-gfmarkdown: css/MarkdownEditor.css');
 
-        Requirements::css($base . '/css/MarkdownEditor.css');
+        Requirements::javascript('axllent/silverstripe-gfmarkdown: thirdparty/ace/ace.js');
+        Requirements::javascript('axllent/silverstripe-gfmarkdown: thirdparty/ace/mode-markdown.js');
 
-        Requirements::javascript($base . '/thirdparty/ace/ace.js');
-        Requirements::javascript($base . '/thirdparty/ace/mode-markdown.js');
-        if (is_file(Director::baseFolder() . '/' . $base . '/thirdparty/ace/theme-' . $this->theme . '.js')) {
-            Requirements::javascript($base . '/thirdparty/ace/theme-' . $this->theme . '.js');
+        $theme = ModuleResourceLoader::singleton()->resolvePath(
+            'axllent/silverstripe-gfmarkdown: thirdparty/ace/theme-' . $this->theme . '.js'
+        );
+        if ($theme) {
+            Requirements::javascript('axllent/silverstripe-gfmarkdown: thirdparty/ace/theme-' . $this->theme . '.js');
         }
-        Requirements::javascript($base . '/javascript/MarkdownEditor.js');
+
+        Requirements::javascript('axllent/silverstripe-gfmarkdown: javascript/MarkdownEditor.js');
 
         return parent::FieldHolder($properties);
     }
@@ -104,14 +107,5 @@ class MarkdownEditor extends TextareaField
                 'data-ace-highlight-active-line' => $this->highlight_active_line
             )
         );
-    }
-
-    /**
-    * Returns the base directory of this module
-    * @return string
-    */
-    private function getModuleBase()
-    {
-        return basename(dirname(dirname(dirname(__FILE__))));
     }
 }
