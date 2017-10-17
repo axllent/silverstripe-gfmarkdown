@@ -16,7 +16,7 @@
 	},
 	"require": {
         "silverstripe/vendor-plugin": "^1.0",
-		"silverstripe/cms": "^4.0@dev",
+		"silverstripe/cms": "^4.0",
         "erusev/parsedown": "^1.6"
 	},
     "extra": {
