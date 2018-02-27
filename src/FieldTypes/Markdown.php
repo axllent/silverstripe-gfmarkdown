@@ -23,9 +23,11 @@ class Markdown extends DBText
     {
         $parsedown = new Parsedown();
         $options = $this->config()->get('options');
-        foreach ($options as $fn => $param) {
-            if (method_exists($parsedown, $fn)) {
-                $parsedown->{$fn}($param);
+        if ($options && is_array($options)) {
+            foreach ($options as $fn => $param) {
+                if (method_exists($parsedown, $fn)) {
+                    $parsedown->{$fn}($param);
+                }
             }
         }
         return $parsedown->text($this->value);
