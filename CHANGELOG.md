@@ -2,6 +2,11 @@
 
 Notable changes to this project will be documented in this file.
 
+## [2.2.6]
+
+- Change requirements from `silverstripe/cms` to `silverstripe/framework`
+
+
 ## [2.2.5]
 
 - Fix bug when no options were set
