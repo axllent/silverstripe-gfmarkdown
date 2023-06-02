@@ -18,8 +18,8 @@
         "issues": "https://github.com/axllent/silverstripe-gfmarkdown/issues"
     },
     "require": {
-        "silverstripe/vendor-plugin": "^1.0",
-        "silverstripe/framework": "^4.0",
+        "silverstripe/vendor-plugin": "^1.0 || ^2.0",
+        "silverstripe/framework": "^4.0 || ^5.0",
         "erusev/parsedown": "^1.6"
     },
     "extra": {

@@ -1,4 +1,4 @@
-# Github Flavoured Markdown for SilverStripe 4
+# Github Flavoured Markdown for Silverstripe
 
 This module adds a field and a data type that allows for Markdown editing in the CMS using
 the Github Flavoured Markdown parser [Parsedown](http://parsedown.org/) to render the html.
@@ -7,7 +7,7 @@ It includes the [Ace editor](https://ace.c9.io/) for CMS editing.
 
 ## Requirements
 
-* SilverStripe 4.x
+* Silverstripe ^4.0 || ^5.0
 
 ## Installation
 
@@ -51,7 +51,7 @@ class MyPage extends Page
 }
 ```
 
-## SilverStripe Template:
+## Silverstripe Template:
 
 ```html
 <div class="content">
