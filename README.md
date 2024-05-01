@@ -17,7 +17,7 @@ It includes the [Ace editor](https://ace.c9.io/) for CMS editing.
 
 Use the Markdown data type as your fields data type, and the MarkdownEditor field in the CMS for editing.
 
-- Refer to the [Markdown editor configuration](docs/en/MarkdownEditor.md).
+- Refer to the [Markdown editor configuration](docs/en/Markdown-Editor.md).
 - Refer to the [Markdown rendering configuration](docs/en/Markdown.md).
 
 ## Example:
